@@ -1,0 +1,69 @@
+# Unified Dockerfile for AI Hedge Fund v5
+# Runs backend (8001) and nginx frontend/proxy (3000) in one container.
+
+# --- Stage 1: Build React client ---
+FROM node:22-alpine AS client-builder
+WORKDIR /build/src/v3/react-app
+COPY src/v3/react-app/package*.json ./
+RUN npm install --no-audit --no-fund
+COPY src/v3/react-app/ ./
+RUN npm run build
+
+# --- Stage 2: Runtime image ---
+FROM python:3.11-slim
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    libpq-dev \
+    nginx \
+    curl \
+    netcat-openbsd \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Install Python deps required by backend runtime.
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir \
+      fastapi>=0.109.0 \
+      uvicorn[standard]>=0.27.0 \
+      yfinance>=0.2.36 \
+      pydantic>=2.5.0 \
+      pydantic-settings>=2.1.0 \
+      pyyaml>=6.0 \
+      pandas>=2.1.0 \
+      numpy>=1.26.0 \
+      python-dotenv>=1.0.0 \
+      httpx>=0.26.0 \
+      requests>=2.31.0 \
+      aiohttp>=3.9.0 \
+      websockets>=11.0 \
+      asyncpg>=0.29.0 \
+      sqlalchemy[asyncio]>=2.0.0 \
+      alembic>=1.13.0 \
+      psutil>=5.9.0 \
+      redis>=5.0.0 \
+      python-multipart>=0.0.7 \
+      python-jose[cryptography]>=3.3.0
+
+# Copy built static files from client-builder.
+COPY --from=client-builder /build/static/v3 ./static/v3
+
+# Copy backend code and assets.
+COPY src/ ./src/
+COPY data/ ./data/
+COPY finance_db_api/ ./finance_db_api/
+# Runtime config/scripts.
+COPY nginx.conf /etc/nginx/sites-available/default
+RUN rm -f /etc/nginx/sites-enabled/default && \
+    ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+COPY start.sh ./start.sh
+RUN chmod +x ./start.sh
+
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/app
+
+EXPOSE 8001
+EXPOSE 3000
+
+CMD ["./start.sh"]

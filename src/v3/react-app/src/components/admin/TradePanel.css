@@ -1,0 +1,419 @@
+.trade-tab-content .trade-command-deck {
+  background:
+    linear-gradient(180deg, rgba(7, 27, 34, 0.92) 0%, rgba(6, 22, 29, 0.94) 100%),
+    var(--metro-bg-main);
+  border: 1px solid var(--metro-border);
+  box-shadow: inset 0 0 0 1px rgba(112, 151, 50, 0.08);
+  grid-template-rows: minmax(0, 1fr);
+  min-height: clamp(360px, 52vh, 620px);
+}
+
+.trade-tab-content .trade-command-deck .reports-command-body {
+  height: 100%;
+  min-height: 0;
+  align-items: stretch;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.trade-tab-content .reports-command-timeline,
+.trade-tab-content .reports-command-reader {
+  background: linear-gradient(180deg, rgba(8, 32, 39, 0.82) 0%, rgba(8, 28, 36, 0.9) 100%);
+  border: 1px solid rgba(112, 151, 50, 0.24);
+  min-height: 0;
+}
+
+.trade-tab-content .reports-command-section-title {
+  background: linear-gradient(90deg, rgba(13, 40, 48, 0.92) 0%, rgba(11, 34, 42, 0.88) 100%);
+  border-bottom: 1px solid rgba(112, 151, 50, 0.28);
+}
+
+.trade-tab-content .trade-panel-scroll {
+  background: linear-gradient(180deg, rgba(7, 26, 33, 0.82) 0%, rgba(7, 23, 31, 0.9) 100%);
+  padding: 10px;
+  overflow: auto;
+  min-height: 0;
+}
+
+.trade-tab-content .trade-primary-controls,
+.trade-tab-content .trade-advanced-controls {
+  padding: 4px;
+  display: grid;
+  gap: 10px;
+}
+
+.trade-tab-content .trade-primary-controls {
+  grid-template-rows: auto auto auto auto auto;
+}
+
+.trade-tab-content .trade-advanced-controls {
+  align-content: start;
+}
+
+.trade-tab-content .trade-inline-config {
+  border: 1px solid rgba(112, 151, 50, 0.24);
+  background: linear-gradient(180deg, rgba(7, 26, 33, 0.88) 0%, rgba(7, 23, 31, 0.94) 100%);
+}
+
+.trade-tab-content .trade-inline-config-body {
+  padding: 8px 10px 10px;
+}
+
+.trade-tab-content .trade-input,
+.trade-tab-content .trade-select {
+  background: linear-gradient(180deg, rgba(9, 30, 38, 0.95) 0%, rgba(8, 25, 32, 0.96) 100%) !important;
+  border: 1px solid rgba(112, 151, 50, 0.35) !important;
+  color: var(--metro-text-primary) !important;
+  border-radius: 2px;
+}
+
+.trade-tab-content .trade-input::placeholder {
+  color: var(--metro-text-ghost);
+}
+
+.trade-tab-content input[type="date"].trade-input {
+  color-scheme: dark;
+  -webkit-appearance: none;
+  appearance: none;
+  color: var(--metro-text-primary) !important;
+}
+
+.trade-tab-content input[type="date"].trade-input::-webkit-datetime-edit,
+.trade-tab-content input[type="date"].trade-input::-webkit-datetime-edit-text,
+.trade-tab-content input[type="date"].trade-input::-webkit-datetime-edit-month-field,
+.trade-tab-content input[type="date"].trade-input::-webkit-datetime-edit-day-field,
+.trade-tab-content input[type="date"].trade-input::-webkit-datetime-edit-year-field {
+  color: var(--metro-text-primary);
+}
+
+.trade-tab-content input[type="date"].trade-input::-webkit-calendar-picker-indicator {
+  opacity: 0.78;
+  cursor: pointer;
+}
+
+.trade-tab-content .trade-dropdown {
+  position: relative;
+}
+
+.trade-tab-content .trade-select-control {
+  width: 100%;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 9px;
+  text-align: left;
+  font-size: 10px;
+  font-family: 'Press Start 2P', monospace;
+  text-transform: inherit;
+}
+
+.trade-tab-content .trade-select-control__label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trade-tab-content .trade-select-caret {
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid var(--metro-text-secondary);
+  border-bottom: 2px solid var(--metro-text-secondary);
+  transform: rotate(45deg);
+  transition: transform 120ms ease;
+  flex: 0 0 auto;
+}
+
+.trade-tab-content .trade-select-caret.is-open {
+  transform: rotate(225deg) translate(-1px, -1px);
+}
+
+.trade-tab-content .trade-select-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 40;
+  border: 1px solid rgba(112, 151, 50, 0.5);
+  background: linear-gradient(180deg, rgba(8, 28, 35, 0.98) 0%, rgba(6, 22, 30, 0.99) 100%);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(155, 188, 15, 0.08);
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.trade-tab-content .trade-select-option {
+  width: 100%;
+  display: block;
+  border: 0;
+  border-bottom: 1px solid rgba(112, 151, 50, 0.18);
+  background: transparent;
+  color: var(--metro-text-secondary);
+  padding: 7px 9px;
+  text-align: left;
+  font-size: 10px;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.trade-tab-content .trade-select-option:last-child {
+  border-bottom: 0;
+}
+
+.trade-tab-content .trade-select-option:hover {
+  background: rgba(155, 188, 15, 0.12);
+  color: var(--metro-text-primary);
+}
+
+.trade-tab-content .trade-select-option.is-selected {
+  background: rgba(155, 188, 15, 0.18);
+  color: var(--metro-text-primary);
+}
+
+.trade-tab-content .trade-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  color-scheme: dark;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--metro-text-secondary) 50%),
+    linear-gradient(135deg, var(--metro-text-secondary) 50%, transparent 50%),
+    linear-gradient(180deg, rgba(9, 30, 38, 0.95) 0%, rgba(8, 25, 32, 0.96) 100%);
+  background-position:
+    calc(100% - 11px) calc(50% - 2px),
+    calc(100% - 6px) calc(50% - 2px),
+    0 0;
+  background-size: 5px 5px, 5px 5px, 100% 100%;
+  background-repeat: no-repeat;
+  padding-right: 18px;
+}
+
+.trade-tab-content .trade-select option {
+  background: #0a1f28;
+  color: #b6d86f;
+}
+
+.trade-tab-content .trade-select:focus,
+.trade-tab-content .trade-input:focus {
+  border-color: var(--metro-border) !important;
+  box-shadow: 0 0 0 1px rgba(155, 188, 15, 0.15), 0 0 12px rgba(155, 188, 15, 0.08);
+}
+
+.trade-tab-content .trade-primary-controls label,
+.trade-tab-content .trade-advanced-controls label {
+  color: var(--metro-text-secondary);
+  letter-spacing: 0.08em;
+}
+
+.trade-tab-content .trade-primary-controls .tactical-trigger,
+.trade-tab-content .trade-advanced-controls .tactical-trigger {
+  background: linear-gradient(180deg, rgba(9, 29, 37, 0.9) 0%, rgba(8, 25, 32, 0.96) 100%) !important;
+  border-color: rgba(112, 151, 50, 0.34) !important;
+  color: var(--metro-text-secondary) !important;
+}
+
+.trade-tab-content .trade-primary-controls .tactical-trigger:hover,
+.trade-tab-content .trade-advanced-controls .tactical-trigger:hover {
+  border-color: var(--metro-border) !important;
+  color: var(--metro-text-primary) !important;
+  box-shadow: inset 0 0 18px rgba(155, 188, 15, 0.08);
+}
+
+/* Runner-only 2D pixel depth system */
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] {
+  --runner-top-edge: rgba(161, 196, 72, 0.58);
+  --runner-left-edge: rgba(143, 181, 61, 0.45);
+  --runner-bottom-edge: rgba(44, 67, 28, 0.95);
+  --runner-right-edge: rgba(33, 52, 23, 0.92);
+  --runner-fill-top: rgba(12, 34, 43, 0.96);
+  --runner-fill-bottom: rgba(8, 24, 31, 0.98);
+  --runner-selected-top: rgba(10, 27, 35, 0.98);
+  --runner-selected-bottom: rgba(6, 18, 24, 1);
+  --runner-inset-highlight: rgba(176, 208, 92, 0.18);
+  --runner-inset-shadow: rgba(0, 0, 0, 0.58);
+  --runner-disabled-top: rgba(9, 21, 27, 0.9);
+  --runner-disabled-bottom: rgba(7, 17, 22, 0.92);
+  --runner-disabled-text: rgba(129, 152, 97, 0.66);
+}
+
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .trade-input,
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .trade-select-control,
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .trade-primary-controls .tactical-trigger,
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .trade-advanced-controls .tactical-trigger {
+  background: linear-gradient(180deg, var(--runner-fill-top) 0%, var(--runner-fill-bottom) 100%) !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: var(--runner-top-edge) var(--runner-right-edge) var(--runner-bottom-edge) var(--runner-left-edge) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(188, 216, 111, 0.08),
+    inset -1px 0 0 rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(9, 22, 29, 0.72) !important;
+  transition: box-shadow 120ms ease, border-color 120ms ease, background 120ms ease, color 120ms ease;
+}
+
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .trade-input:hover,
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .trade-select-control:hover,
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .trade-primary-controls .tactical-trigger:hover,
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .trade-advanced-controls .tactical-trigger:hover {
+  border-color: rgba(176, 208, 90, 0.7) rgba(49, 76, 32, 0.96) rgba(39, 63, 27, 0.96) rgba(157, 195, 74, 0.64) !important;
+  color: var(--metro-text-primary) !important;
+}
+
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .trade-input:focus,
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .trade-input:focus-visible,
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .trade-select-control:focus,
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .trade-select-control:focus-visible,
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .trade-primary-controls .tactical-trigger:focus-visible,
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .trade-advanced-controls .tactical-trigger:focus-visible {
+  outline: none;
+  background: linear-gradient(180deg, var(--runner-selected-top) 0%, var(--runner-selected-bottom) 100%) !important;
+  box-shadow:
+    inset 0 1px 0 var(--runner-inset-highlight),
+    inset 0 2px 0 rgba(0, 0, 0, 0.46),
+    inset 1px 1px 0 var(--runner-inset-shadow),
+    inset -1px -1px 0 rgba(174, 204, 92, 0.08),
+    0 0 0 1px rgba(155, 188, 15, 0.2) !important;
+}
+
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .tactical-trigger--depth[data-active="true"],
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .tactical-trigger[aria-pressed="true"],
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .trade-select-option.is-selected {
+  background: linear-gradient(180deg, var(--runner-selected-top) 0%, var(--runner-selected-bottom) 100%) !important;
+  border-color: rgba(70, 96, 45, 0.98) rgba(126, 164, 58, 0.66) rgba(163, 197, 74, 0.82) rgba(74, 103, 49, 0.98) !important;
+  box-shadow:
+    inset 0 2px 0 rgba(0, 0, 0, 0.52),
+    inset 1px 1px 0 var(--runner-inset-shadow),
+    inset -1px -1px 0 rgba(174, 204, 92, 0.12),
+    0 0 0 1px rgba(10, 22, 28, 0.8) !important;
+  color: var(--metro-text-primary) !important;
+}
+
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .trade-select-menu {
+  border-color: rgba(96, 132, 45, 0.92);
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(164, 197, 74, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.34);
+}
+
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .trade-select-option {
+  border-bottom-color: rgba(99, 133, 49, 0.24);
+}
+
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .trade-select-option:hover {
+  background: linear-gradient(180deg, rgba(22, 50, 32, 0.58) 0%, rgba(14, 34, 25, 0.72) 100%);
+}
+
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .trade-input:disabled,
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .trade-select-control:disabled,
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .trade-primary-controls .tactical-trigger:disabled,
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .trade-advanced-controls .tactical-trigger:disabled {
+  background: linear-gradient(180deg, var(--runner-disabled-top) 0%, var(--runner-disabled-bottom) 100%) !important;
+  border-color: rgba(63, 85, 42, 0.5) rgba(28, 43, 19, 0.88) rgba(20, 30, 15, 0.9) rgba(63, 85, 42, 0.5) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(138, 164, 90, 0.05),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3) !important;
+  color: var(--runner-disabled-text) !important;
+  opacity: 1 !important;
+  cursor: not-allowed;
+}
+
+/* Readability pass for the browser-runner form */
+.trade-tab-content .trade-panel-scroll {
+  padding: 14px;
+}
+
+.trade-tab-content .trade-primary-controls,
+.trade-tab-content .trade-advanced-controls {
+  padding: 8px;
+  gap: 14px;
+}
+
+.trade-tab-content .trade-inline-config-body {
+  padding: 12px 14px 14px;
+}
+
+.trade-tab-content .trade-input,
+.trade-tab-content .trade-select-control,
+.trade-tab-content .trade-primary-controls .tactical-trigger,
+.trade-tab-content .trade-advanced-controls .tactical-trigger,
+.trade-tab-content .trade-select-option {
+  font-family: 'JetBrains Mono', monospace !important;
+  letter-spacing: 0 !important;
+}
+
+.trade-tab-content .trade-input,
+.trade-tab-content .trade-select-control {
+  min-height: 40px;
+  padding: 10px 12px !important;
+  font-size: 13px !important;
+  line-height: 1.35 !important;
+}
+
+.trade-tab-content .trade-input::placeholder {
+  font-size: 12px;
+}
+
+.trade-tab-content .trade-select-control {
+  min-height: 40px;
+  padding: 10px 12px;
+  font-size: 13px;
+}
+
+.trade-tab-content .trade-select-control__label {
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.trade-tab-content .trade-select-option {
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.trade-tab-content .trade-primary-controls label,
+.trade-tab-content .trade-advanced-controls label,
+.trade-tab-content .reports-command-section-title span {
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+}
+
+.trade-tab-content .trade-primary-controls .tactical-trigger,
+.trade-tab-content .trade-advanced-controls .tactical-trigger {
+  min-height: 40px;
+  padding: 10px 12px !important;
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.04em !important;
+}
+
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .text-\[8px\],
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .text-\[9px\],
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .text-\[10px\] {
+  font-size: 12px !important;
+  line-height: 1.3 !important;
+}
+
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .data-mono {
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .grid.grid-cols-2,
+.trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .grid.grid-cols-3 {
+  gap: 10px !important;
+}
+
+@media (max-width: 900px) {
+  .trade-tab-content .trade-panel-scroll {
+    padding: 10px;
+  }
+
+  .trade-tab-content .trade-primary-controls,
+  .trade-tab-content .trade-advanced-controls {
+    padding: 4px;
+    gap: 10px;
+  }
+
+  .trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .grid.grid-cols-2,
+  .trade-tab-content .reports-command-timeline[aria-label="Trade runner controls"] .grid.grid-cols-3 {
+    grid-template-columns: 1fr !important;
+  }
+}

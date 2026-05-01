@@ -1,0 +1,42 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+!.env.template
+*.pem
+*.key
+*.crt
+client_secret*.json
+
+# Python environments and artifacts
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Frontend dependencies and caches
+node_modules/
+.npm-cache/
+.cache/
+.next/
+dist/
+build/
+
+# Local runtime data and state
+.swarm/
+data/
+state/
+static/
+finance_db_api/
+TradingAgents-original/
+*.db
+*.sqlite
+*.sqlite3
+*.log
+
+# IDE/editor
+.vscode/
+.idea/

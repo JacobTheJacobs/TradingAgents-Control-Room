@@ -1,0 +1,29 @@
+FROM python:3.11-slim
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+
+# Copy upstream project and sidecar orchestrator.
+COPY TradingAgents-original/ /workspace/TradingAgents-original/
+COPY src/upstream_cli_sidecar/ /workspace/src/upstream_cli_sidecar/
+
+# Install upstream package (with its dependencies) plus sidecar runtime deps.
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir /workspace/TradingAgents-original && \
+    pip install --no-cache-dir \
+      fastapi>=0.109.0 \
+      uvicorn[standard]>=0.27.0
+
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/workspace
+ENV UPSTREAM_CLI_WORKDIR=/workspace/TradingAgents-original
+ENV UPSTREAM_RUNS_DIR=/shared/tradingagents-runs
+ENV UPSTREAM_SIDECAR_PORT=8011
+
+EXPOSE 8011
+
+CMD ["python", "-m", "src.upstream_cli_sidecar.main"]

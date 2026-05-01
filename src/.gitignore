@@ -1,0 +1,41 @@
+# Security and local environment
+.env
+.env.*
+!.env.example
+!.env.template
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.venv/
+venv/
+
+# Node artifacts
+node_modules/
+.npm-cache/
+.cache/
+dist/
+build/
+
+# Runtime/state/data
+state/
+data/
+static/
+*.db
+*.sqlite
+*.sqlite3
+*.log
+
+# IDE/editor
+.vscode/
+.idea/
+
+# Misc generated outputs
+out*.txt
+build_output*.txt
+vite_*.txt
+coverage/
