@@ -1,0 +1,208 @@
+/* ═══════════════════════════════════════════════════════════
+   TAStatusBar - TradingAgents Progress Tracker 
+   Retro pixel-art styling matching existing 8-bit theme
+   ═══════════════════════════════════════════════════════════ */
+
+.ta-status-bar {
+  position: relative;
+  background: linear-gradient(180deg, #0d1117 0%, #0a0e14 100%);
+  border: 2px solid rgba(0, 200, 255, 0.3);
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-family: 'VT323', 'Press Start 2P', monospace;
+  overflow: hidden;
+}
+
+/* Animated border glow when running */
+.ta-status-bar::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(0, 200, 255, 0.15), 
+    rgba(0, 255, 180, 0.1), 
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: ta-border-sweep 3s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes ta-border-sweep {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Stats Row ── */
+.ta-status-bar__stats {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.ta-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.ta-stat__label {
+  color: #6b7280;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.ta-stat__value {
+  color: #e5e7eb;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.ta-stat__value--complete {
+  color: #22c55e;
+  text-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
+}
+
+.ta-stat--ticker {
+  color: #00c8ff;
+  font-weight: bold;
+  font-size: 18px;
+  text-shadow: 0 0 8px rgba(0, 200, 255, 0.4);
+  margin-right: 4px;
+}
+
+.ta-stat--timer .ta-stat__value {
+  color: #fbbf24;
+  font-variant-numeric: tabular-nums;
+}
+
+.ta-stat--decision {
+  font-weight: bold;
+  font-size: 16px;
+  padding: 1px 6px;
+  border-radius: 2px;
+  border: 1px solid;
+  text-transform: uppercase;
+}
+
+.ta-stat--decision-buy,
+.ta-stat--decision-strong_buy {
+  color: #22c55e;
+  border-color: rgba(34, 197, 94, 0.5);
+  background: rgba(34, 197, 94, 0.1);
+  text-shadow: 0 0 4px rgba(34, 197, 94, 0.3);
+}
+
+.ta-stat--decision-sell,
+.ta-stat--decision-strong_sell {
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.5);
+  background: rgba(239, 68, 68, 0.1);
+  text-shadow: 0 0 4px rgba(239, 68, 68, 0.3);
+}
+
+.ta-stat--decision-hold {
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.5);
+  background: rgba(251, 191, 36, 0.1);
+}
+
+.ta-stat-divider {
+  color: #374151;
+  font-size: 14px;
+  user-select: none;
+}
+
+/* ── Report Dots Row ── */
+.ta-status-bar__reports {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 4px;
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ta-report-dot {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 6px;
+  border-radius: 2px;
+  border: 1px solid rgba(107, 114, 128, 0.3);
+  background: rgba(17, 24, 39, 0.6);
+  font-size: 12px;
+  color: #4b5563;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.ta-report-dot__icon {
+  font-size: 11px;
+  filter: grayscale(1) opacity(0.4);
+  transition: filter 0.3s ease;
+}
+
+.ta-report-dot__label {
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  font-size: 7px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ta-report-dot--done {
+  border-color: rgba(34, 197, 94, 0.4);
+  background: rgba(34, 197, 94, 0.08);
+  color: #22c55e;
+}
+
+.ta-report-dot--done .ta-report-dot__icon {
+  filter: none;
+}
+
+.ta-report-dot--done .ta-report-dot__label {
+  color: #86efac;
+}
+
+/* ── Running Pulse ── */
+.ta-status-bar__pulse {
+  position: absolute;
+  top: 0;
+  right: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.6);
+  animation: ta-pulse 1.5s ease-in-out infinite;
+  z-index: 2;
+  margin-top: 8px;
+}
+
+@keyframes ta-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 800px) {
+  .ta-status-bar__stats {
+    font-size: 13px;
+  }
+  .ta-stat__value {
+    font-size: 13px;
+  }
+  .ta-stat__label {
+    font-size: 11px;
+  }
+}

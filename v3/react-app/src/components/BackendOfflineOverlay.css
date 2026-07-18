@@ -1,0 +1,114 @@
+.backend-offline-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background:
+    linear-gradient(180deg, rgba(9, 17, 24, 0.86), rgba(5, 9, 13, 0.94)),
+    radial-gradient(circle at top, rgba(255, 89, 64, 0.16), transparent 45%);
+  backdrop-filter: blur(6px);
+}
+
+.backend-offline-overlay__panel {
+  width: min(560px, 100%);
+  padding: 24px;
+  border: 1px solid rgba(255, 125, 94, 0.45);
+  background: rgba(8, 16, 23, 0.96);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+  color: #f4efe6;
+  font-family: 'Share Tech Mono', 'IBM Plex Mono', monospace;
+}
+
+.backend-offline-overlay__eyebrow {
+  margin-bottom: 10px;
+  color: #ff8e6f;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.backend-offline-overlay__title {
+  margin: 0 0 12px;
+  color: #fff4e8;
+  font-size: clamp(22px, 4vw, 34px);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.backend-offline-overlay__message,
+.backend-offline-overlay__detail {
+  margin: 0 0 10px;
+  color: rgba(244, 239, 230, 0.88);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.backend-offline-overlay__detail span {
+  color: #7ef9d6;
+}
+
+.backend-offline-overlay__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.backend-offline-overlay__status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  padding: 10px 14px;
+  border: 1px solid currentColor;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.backend-offline-overlay__status--offline {
+  color: #ff8e6f;
+}
+
+.backend-offline-overlay__status--recovering,
+.backend-offline-overlay__status--starting {
+  color: #f2d56b;
+}
+
+.backend-offline-overlay__status--live {
+  color: #6cf2ad;
+}
+
+.backend-offline-overlay__button {
+  border: 1px solid #7ef9d6;
+  background: transparent;
+  color: #7ef9d6;
+  padding: 10px 18px;
+  font: inherit;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.backend-offline-overlay__button:hover {
+  background: rgba(126, 249, 214, 0.14);
+}
+
+@media (max-width: 640px) {
+  .backend-offline-overlay__panel {
+    padding: 20px;
+  }
+
+  .backend-offline-overlay__footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .backend-offline-overlay__button {
+    width: 100%;
+  }
+}

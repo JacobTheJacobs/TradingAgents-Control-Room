@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Architecture and roadmap
+    url: https://github.com/JacobTheJacobs/tradingagents-control-room
+    about: Review the repository docs before filing broad design questions.

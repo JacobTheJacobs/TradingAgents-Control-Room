@@ -1,0 +1,22 @@
+FROM python:3.12-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/workspace
+
+WORKDIR /workspace
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY . /workspace/src
+
+RUN pip install --no-cache-dir /workspace/src/TradingAgents-original \
+    "fastapi>=0.109.0" \
+    "uvicorn[standard]>=0.27.0" \
+    "python-dotenv>=1.0.0"
+
+EXPOSE 8011
+
+CMD ["uvicorn", "src.upstream_cli_sidecar.main:app", "--host", "0.0.0.0", "--port", "8011"]

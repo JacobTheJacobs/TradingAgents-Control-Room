@@ -1,0 +1,86 @@
+.pipeline-scenes-panel .showrunner-panel {
+  background: transparent;
+  display: grid;
+  gap: 8px;
+}
+
+.pipeline-scenes-panel .showrunner-section {
+  background: var(--pipeline-card, rgba(8, 22, 28, 0.72));
+  border: 1px solid var(--metro-border-soft);
+  box-shadow: none;
+  border-radius: 0;
+  padding: 8px;
+}
+
+.pipeline-scenes-panel .showrunner-btn {
+  border-radius: 0;
+  border: 1px solid var(--metro-border-soft);
+  background: var(--pipeline-card, rgba(8, 22, 28, 0.72));
+  color: var(--metro-text-ghost);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  cursor: pointer;
+  padding: 6px 8px;
+}
+
+.pipeline-scenes-panel .showrunner-btn:hover {
+  outline: none;
+  border-color: var(--metro-border);
+  color: var(--metro-text-secondary);
+  background: var(--pipeline-hover, rgba(15, 56, 15, 0.35));
+}
+
+.pipeline-scenes-panel .showrunner-reconnect-btn {
+  padding: 2px 6px;
+  font-size: 7px;
+  margin-left: auto;
+}
+
+.pipeline-scenes-panel .showrunner-connection-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+}
+
+.pipeline-scenes-panel .showrunner-connection-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pipeline-scenes-panel .devtools-connection {
+  margin-bottom: 8px;
+  padding: 8px;
+  border: 1px solid var(--metro-border-soft);
+  background: var(--pipeline-card, rgba(8, 22, 28, 0.72));
+}
+
+.pipeline-scenes-panel .devtools-connection-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.pipeline-scenes-panel .devtools-connection-dot.is-connected {
+  background: var(--metro-text-secondary);
+}
+
+.pipeline-scenes-panel .devtools-connection-dot.is-disconnected {
+  background: var(--metro-text-ghost);
+}
+
+.pipeline-scenes-panel .devtools-connection-label.is-connected {
+  color: var(--metro-text-secondary);
+}
+
+.pipeline-scenes-panel .devtools-connection-label.is-disconnected {
+  color: var(--metro-text-ghost);
+}
+
+.pipeline-scenes-panel .devtools-connection-note {
+  font-size: 7px;
+  color: var(--metro-text-muted, var(--metro-text-ghost));
+}
